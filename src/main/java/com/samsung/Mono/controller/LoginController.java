@@ -17,20 +17,16 @@ public class LoginController {
 
 
     @RequestMapping("/login")
-    public String loginUser(){
+    public String loginUser(@ModelAttribute("userForm") User userForm){
 
+        System.out.println(userForm.getUsername()+"/"+userForm.getPassword());
 
-
-        return "OK";
+        return "/home";
     }
 
-    @RequestMapping("/register")
-    public void registerUser(@ModelAttribute("userForm") User userForm){
-
-        userService.register(userForm);
-
+    @RequestMapping("/registerUser")
+    public User registerUser(@ModelAttribute("userForm") User userForm){
+        return userService.register(userForm);
     }
-
-
 
 }
