@@ -1,6 +1,7 @@
 package com.samsung.Mono.controller;
 
 
+import com.samsung.Mono.entity.LoginResult;
 import com.samsung.Mono.entity.User;
 import com.samsung.Mono.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,11 +18,8 @@ public class LoginController {
 
 
     @RequestMapping("/login")
-    public String loginUser(@ModelAttribute("userForm") User userForm){
-
-        System.out.println(userForm.getUsername()+"/"+userForm.getPassword());
-
-        return "/home";
+    public LoginResult loginUser(@ModelAttribute("userForm") User userForm){
+        return userService.login(userForm);
     }
 
     @RequestMapping("/registerUser")
